@@ -1,15 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { tagRemoved, tagSelected } from "../../Features/Filter/filterSlice";
 
-
 const Tag = ({ tag }) => {
     const { title } = tag;
     const dispatch = useDispatch();
     const {selectedTags} = useSelector(state=>state.filters)
-
-
     const isSelected = selectedTags.includes(title)
-
     const handleTagSelected = (title)=>{
         if(isSelected){
             dispatch(tagRemoved(title))

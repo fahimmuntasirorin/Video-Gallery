@@ -4,11 +4,13 @@ import { useEffect } from "react";
 import { fetchVideosApi } from "../../Features/videos/videosSlice";
 import Loading from "../../Utils/Loading/Loading";
 const VideosGrid = () => {
+    const {selectedTags:tags} = useSelector(state=>state.filters)
+    console.log(tags);
     const {isLoading,isError , videos} = useSelector(state=>state.videos);
     const dispatch = useDispatch()
     useEffect(()=>{
-        dispatch(fetchVideosApi())
-    },[dispatch])
+        dispatch(fetchVideosApi({tags}))
+    },[dispatch,tags])
     console.log(videos);
     let content = '';
 

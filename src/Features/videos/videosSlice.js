@@ -10,8 +10,8 @@ const initialState = {
 }
 
 
-export const fetchVideosApi = createAsyncThunk('fetchVideos',async()=>{
-    const videos = await videosAPI()
+export const fetchVideosApi = createAsyncThunk('fetchVideos',async({tags})=>{
+    const videos = await videosAPI({tags})
     return videos;
 })
 
